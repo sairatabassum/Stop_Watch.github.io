@@ -1,19 +1,21 @@
 
-// Initialize hour, minute, second
+// Initialize hour, minute, second , millisecond
 var hour = 0;
 var minute = 0;
 var second = 0;
+var milli = 0;
 
 // Select Start , Stop , Reset Button
 var start = document.querySelector(".start");
 var stop = document.querySelector(".stop");
 var reset = document.querySelector(".reset");
 
-// Select Hour , Minute , Second Text
+// Select Hour , Minute , Second , MilliSecond Text
 
 var H = document.querySelector(".hour");
 var M = document.querySelector(".minute");
 var S = document.querySelector(".second");
+var MI = document.querySelector(".milli");
 
 
 var Environment;
@@ -23,7 +25,7 @@ start.onclick = function () {
 
     clearInterval(Environment);
     // The setInterval() method will continue until clearInterval() is called
-    Environment = setInterval(startCount, 1000);
+    Environment = setInterval(startCount, 100);
 
 }
 
@@ -41,28 +43,39 @@ reset.onclick = function () {
     H.innerHTML = "00";
     M.innerHTML = "00";
     S.innerHTML = "00";
+    MI.innerHTML = "0";
     hour = 0;
     minute = 0;
     second = 0;
+    milli = 0;
 }
 
 
 
 function startCount() {
 
-    second++;
-    // Length of second ; if 0 then length= 1 else length= 2
-    v_s = parseInt(second / 10);
+    milli++;
+    MI.innerHTML = milli;
+
+    if (milli > 9) {
+
+        milli = 0;
+        MI.innerHTML = "0";
+        second++;
+        // Length of second ; if 0 then length= 1 else length= 2
+        v_s = parseInt(second / 10);
 
 
-    if (v_s == 0) {
+        if (v_s == 0) {
 
-        S.innerHTML = '0' + second;
+            S.innerHTML = '0' + second;
 
-    }
-    else {
+        }
+        else {
 
-        S.innerHTML = second;
+            S.innerHTML = second;
+        }
+
     }
 
     // 60 seconds == 1 minute
@@ -88,8 +101,8 @@ function startCount() {
     // 60 minutes == 1 hour
     if (minute > 59) {
 
-        minute=0;
-        M.innerHTML= "00";
+        minute = 0;
+        M.innerHTML = "00";
         hour++;
         v_h = parseInt(hour / 10);
 
