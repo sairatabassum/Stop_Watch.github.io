@@ -1,5 +1,5 @@
 # Stop_Watch
-### This is simple Stop-Watch. Start, Stop & Reset (Hour :Minute :Second) :nerd_face:
+### This is a simple Stop-Watch. Start, Stop & Reset (Hour : Minute : Second) :nerd_face:
 
 <hr> </hr>
 
